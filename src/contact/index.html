@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaiya. J's website</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+</head>
+<body>
+    <!-- loading navbar -->
+    <div id="navbar" class="navbar"
+        hx-get="/components/navbar.html"
+        hx-target="#navbar"
+        hx-swap="innerHTML"
+        hx-trigger="load once"
+    ></div>
+
+    <!-- main content -->
+    <div class="main">
+        <h1>Contact me</h1>
+        <p>I'm generally quite closed off to contact so I don't offer any social platforms people can freely add me on.</p>
+        <p>If you want to contact me for another reason, I would suggest getting in touch over email. I'll probably ask to move to a more conventional platform (generally that will be Instagram, Whatsapp or Discord).</p>
+        <p>I don't (yet) have a business email, so feel free to contact me on my personal email <a href="mailto:nnk.rta@gmail.com">nnk.rta@gmail.com</a></p>
+    </div>
+
+    <!-- loading footer -->
+    <div id="footer" class="footer"
+        hx-get="/components/footer.html"
+        hx-target="#footer"
+        hx-swap="innerHTML"
+        hx-trigger="load once"
+    ></div>
+</body>
+</html>

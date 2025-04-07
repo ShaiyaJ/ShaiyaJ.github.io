@@ -1,0 +1,56 @@
+:root {
+    --main-text-c: #000000;
+    --side-text-c: grey;
+    --main-clickable-c: darkgrey;
+    --main-clickable-h-c: black;
+    --main-clickable-v-c: darkgrey;
+
+    max-width: 70em;        /* if it's in landscape */
+    margin: 20px auto;
+    padding: 0px 50px;
+
+    font-family: "dcRoboto", Helvetica, sans-serif;
+}
+
+@media only screen and ((max-width: 500px) or (orientation: portrait)) {
+    :root {
+        width: 90%;
+        margin: 20px auto;
+        padding: 0px 10px;
+    }
+}
+
+/* Navbar Component */
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    font-weight: bolder;
+    color: var(--main-clickable-c);
+    text-decoration: none;
+    margin: auto;
+}
+
+.navbar a:visited {
+    color: var(--main-clickable-c);
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    color: var(--main-clickable-h-c);
+    text-decoration: none;
+}
+
+
+
+/* Footer Component */
+
+.footer {
+    text-align: center;
+}
+
+.footer p {
+    color: var(--side-text-c);
+}

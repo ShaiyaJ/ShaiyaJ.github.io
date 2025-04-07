@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaiya. J's website</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+</head>
+<body>
+    <!-- loading navbar -->
+    <div id="navbar" class="navbar"
+        hx-get="/components/navbar.html"
+        hx-target="#navbar"
+        hx-swap="innerHTML"
+        hx-trigger="load once"
+    ></div>
+
+    <!-- main content -->
+    <div class="main">
+        <h1>Portfolio</h1>
+        <p>Here is a summary of some of my best personal projects that I've worked on over the years.</p>
+
+        <div class="project">
+            <h3>Example</h3>
+            <a href="#">Relevant link(s)</a>
+            <a href="#">Source code</a>
+            <p>Description of the project</p>
+            <img src="#" alt="Image of the project" />
+        </div>
+    </div>
+
+    <!-- loading footer -->
+    <div id="footer" class="footer"
+        hx-get="/components/footer.html"
+        hx-target="#footer"
+        hx-swap="innerHTML"
+        hx-trigger="load once"
+    ></div>
+</body>
+</html>
