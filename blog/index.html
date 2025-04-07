@@ -83,7 +83,7 @@
         const main = document.getElementById("main");
         const loc = window.location.search.substring(1);
         if (loc) {
-            main.setAttribute("hx-get", `./blogcontent/${loc}`);
+            main.setAttribute("hx-get", loc);
         } 
     </script>
 
