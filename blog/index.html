@@ -45,9 +45,25 @@
                 for (const item of items) {
                     if (item.type === "file") {
                         const link = document.createElement("a");
-                        link.href = `./?${item.path}`;
+
+                        // URL info
+                        const path = item.path
+                            .split("/").slice(2)
+                            .join("");
+
+                        link.href = `./?${path}`;
+
+                        // Styling
                         link.textContent = item.name;
                         link.style.display = "block";
+
+                        // HTMX
+                        link.setAttribute("hx-trigger", "click"); 
+                        link.setAttribute("hx-get", `./blogcontent/${path}`);
+                        link.setAttribute("hx-target", "#main");
+                        link.setAttribute("hx-push-url", "true");
+
+                        // Append
                         parentElement.appendChild(link);
 
                     } else if (item.type === "dir") {
@@ -76,14 +92,14 @@
     <div id="main" class="main"
         hx-target="#main"
         hx-swap="innerHTML"
-        hx-trigger="load once"
+        hx-trigger="load"
     ></div>                         <!-- hx-get is defined in the below script tag -->
 
     <script>                        // hx-get definition
         const main = document.getElementById("main");
         const loc = window.location.search.substring(1);
         if (loc) {
-            main.setAttribute("hx-get", loc);
+            main.setAttribute("hx-get", `./blogcontent/${loc}`);
         } 
     </script>
 
