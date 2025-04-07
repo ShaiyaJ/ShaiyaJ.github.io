@@ -45,7 +45,7 @@
                 for (const item of items) {
                     if (item.type === "file") {
                         const link = document.createElement("a");
-                        link.href = `/blog/blogcontent/${item.path.split('/').slice(2).join('/')}`;
+                        link.href = `./?${item.path}`;
                         link.textContent = item.name;
                         link.style.display = "block";
                         parentElement.appendChild(link);
