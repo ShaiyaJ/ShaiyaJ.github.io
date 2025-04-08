@@ -20,6 +20,15 @@
     <div class="main">
         <h2>About me</h2>
         <p>I'm a hobbyist programmer who is focused on creating software - both high and low level. I intend this website to complement my Github - with my portfolio and blog providing a formal presentation and informal musings on my past projects.</p>
+        <p>I don't really have a specific area I stick to when making things - I just work on whatever I have ideas for. Typically this will be lower level things in C/Rust, but sometimes it's just small scripts written in Python or web utilities written in Javascript. I don't have many completed projects at the moment since I have the tendency to jump ship as soon as I have a new idea, but when I do complete something that I think is neat I'll put it on the <a href="/blog">blog</a> or <a href="portfolio">portfolio</a>.</p>
+        <p>My main interests at the moment are in low-level programming and peer to peer networking. So, when things do get finished, expect to see a lot of that.</p>
+        <h2>Using this website</h2>
+        <p>Parts of the website are still under progress. But there is a working blog, which is where you'll find most of my incoherent ramblings.</p>
+        <p>I wrote this website to be very quickly functional, so parts of it will probably change as I focus on (HEAVILY) cleaning it up. I've been wanting a place to display my other projects in a clean(er) format than Github repos allows. One of my first projects I uploaded to Github was an attempt at a "blog" using react. As the years went by I found what I liked and disliked when writing software, and bulky JavaScript frontends was in the "dislike" pile. So instead I wrote this whole thing in htmx. I found the process to be quite fun!</p>
+        <br>
+        <p>For those who are interested in a quick breakdown (which may be avaliable on the blog one day) here is how it works.</p>
+        <p>Static content is just served as HTML that I edit manually. This content is easy enough to manage so I felt no need to over-engineer it.</p>
+        <p>Dynamic content (aka the blog) uses the Github repo as a sort of "database". The frontend just queries Github on the posts and any post content it requires. So if I push a new post, these things will naturally update.</p>
     </div>
 
     <!-- loading footer -->
