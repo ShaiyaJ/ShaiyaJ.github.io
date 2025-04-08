@@ -54,3 +54,37 @@
 .footer p {
     color: var(--side-text-c);
 }
+
+
+
+/* Blog */
+
+.blog-flex-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    flex-shrink: 0;
+    width: 25%;
+}
+
+.blog-main-wrapper {
+    width: 75%;
+}
+
+@media only screen and ((max-width: 1079px) or (orientation: portrait)) {
+    .blog-flex-wrapper {
+        display: inline;
+        flex-direction: row;
+    }
+
+    .sidebar {
+        position: static;
+        display: block;
+    }
+}
+
+.padded-dir {
+    padding-left: 1em;
+}
