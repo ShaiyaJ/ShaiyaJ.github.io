@@ -1,0 +1,29 @@
+<span class="blogmd">
+
+=title
+The blog now has custom markdown!
+
+=subtitle
+I got tired of writing all those tags out...
+
+=date
+2025/04/15
+
+=time
+16:25
+
+=content
+!So, how does it work?!
+
+Well I cheated *a little bit*. 
+
+I didn't want to have to write out tags because that takes a #long# time. So, instead, I replaced the tags with single characters.
+
+I can also disable this custom markdown at any time, since it only applies to content inside tags with blogmd in their class list.
+
+Because of how it's made, I can make different templates under different classnames - which will streamline the post creation process if I do ever decide to write diffrent "genres" of post.
+</span>
+
+!And here's me disabling it!
+
+whoops. Can you tell I'm also using this post as a test?
