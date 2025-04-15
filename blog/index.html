@@ -133,21 +133,31 @@
                         "-": "li",
                         "_": "ul",
                         "`": "ol",
-                    };
+                        };
 
                     // Return value
                     const doc = {};
 
                     // Parse
-                    // TODO: add escape character
                     let currentProperty = "";
                     let currentTag = [];
+                    let escaped = false;
 
                     for (const c of f) {
+                        // Escapes
+                        if (escaped) {
+                            doc[currentProperty] += c;
+                            escaped = false;
+                        }
+
+                        else if (c === "\\") {
+                            escaped = true;
+                        }
                         // Handling switching properties
-                        if (c === "=") {
+                        else if (c === "=") {
                             // Flush current tag
-                            currentTag.map(t => doc[currentProperty] += "</" + t + ">");
+                            while (currentTag.length !== 0)
+                                doc[currentProperty] += "</" + currentTag.pop() + ">";
 
                             // Switch property
                             currentProperty = "";
@@ -157,6 +167,8 @@
                         else if (currentTag.slice(-1)[0] === "PROPERTY") {
                             if (c === "\n" || c === " ") {
                                 doc[currentProperty] = "";
+                            while (currentTag.length !== 0)
+                                doc[currentProperty] += "</" + currentTag.pop() + ">";
                                 currentTag.pop();
                             }
                             else {
@@ -186,7 +198,8 @@
                     }
 
                     // Flush current tag
-                    currentTag.map(t => doc[currentProperty] += "</" + t + ">");
+                    while (currentTag.length !== 0)
+                        doc[currentProperty] += "</" + currentTag.pop() + ">";
 
                     return doc;
                 }
