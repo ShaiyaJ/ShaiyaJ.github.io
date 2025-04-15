@@ -123,21 +123,22 @@
                 function format(f) {
                     // Config in format
                     const commands = {
-                        "!": "h2",
+                        "~": "h2",
                         ">": "h3",
 
                         "*": "em",
                         "#": "strong",
 
                         "-": "li",
-                        ".": "ul",
-                        "+": "ol",
+                        "_": "ul",
+                        "`": "ol",
                     };
 
                     // Return value
                     const doc = {};
 
                     // Parse
+                    // TODO: add escape character
                     let currentProperty = "";
                     let currentTag = [];
 
@@ -191,7 +192,8 @@
 
                 document.addEventListener("htmx:afterRequest", (e) => {
                     if (e.target.id === "main") {
-                        for (const mdtarget of e.target.getElementsByClassName(".blogmd")) {
+                        for (const mdtarget of e.target.getElementsByClassName("blogmd")) {
+                            console.log(mdtarget);
                             const mdformat = format(mdtarget.innerText);
 
                             e.target.innerHTML = `
