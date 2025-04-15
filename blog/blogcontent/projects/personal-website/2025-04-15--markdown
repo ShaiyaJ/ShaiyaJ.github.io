@@ -17,15 +17,22 @@ I got tired of writing all those tags out...
 
 >Well I cheated *a little bit*>
 
+"
 I didn't want to have to write out tags because that takes a #long# time. So, instead, I replaced the tags with single characters.
+"
 
+"
 I can also disable this custom markdown at any time, since it only applies to content inside tags with blogmd in their class list.
+"
 
+"
 Because of how it's made, I can make different templates under different classnames which will streamline the post creation process if I do ever decide to write diffrent "genres" of post.
+"
 
 ~So, it's a slighly more fancy replace function~
+"
 *(that makes my blog/index.html look way way messier)*
-
+"
 _
     - at least it supports lists -
 _

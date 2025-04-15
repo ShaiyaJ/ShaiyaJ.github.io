@@ -125,6 +125,7 @@
                     const commands = {
                         "~": "h2",
                         ">": "h3",
+                        "\"": "p",
 
                         "*": "em",
                         "#": "strong",
@@ -193,14 +194,13 @@
                 document.addEventListener("htmx:afterRequest", (e) => {
                     if (e.target.id === "main") {
                         for (const mdtarget of e.target.getElementsByClassName("blogmd")) {
-                            console.log(mdtarget);
                             const mdformat = format(mdtarget.innerText);
 
                             e.target.innerHTML = `
                                 <h1>${mdformat.title ? mdformat.title : ""}</h1>
                                 <p><em>${mdformat.subtitle ? mdformat.subtitle : ""}</em></p>
                                 <p>${mdformat.date ? mdformat.date : ""} - ${mdformat.time ? mdformat.time : ""}</p>
-                                ${mdformat.content ? mdformat.content : ""}
+                                <span>${mdformat.content ? mdformat.content : ""}</span>
                             `;
                         }
                     }
