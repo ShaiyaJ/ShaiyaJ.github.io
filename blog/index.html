@@ -24,7 +24,7 @@
 
             <!-- loading blog sidebar -->
             <div id="sidebar" class="sidebar"
-            ></div>
+            ><span id="sidebar-load">Fetching post list...</span></div>
 
             <script>
                 const sidebar = document.getElementById("sidebar");
@@ -54,7 +54,7 @@
                                 // URL info
                                 const path = item.path
                                     .split("/").slice(2)
-                                    .join("/");
+                                    .join(":");
 
                                 link.href = `./?${path}`;
 
@@ -95,7 +95,8 @@
                     }
                 }
 
-                fetchPosts();
+                fetchPosts().then(() => document.getElementById("sidebar-load").remove());
+
             </script>
 
             <!-- main content -->
@@ -108,11 +109,97 @@
             </div>
 
             <script>                        // hx-get definition
+                // Get blog content
                 const main = document.getElementById("main");
-                const loc = window.location.search.substring(1);
+                const loc = window.location.search.substring(1)
+                    .replaceAll(":", "/");
+
                 if (loc) {
                     main.setAttribute("hx-get", `./blogcontent/${loc}`);
                 } 
+
+
+                // BLOG MARKDOWN
+                function format(f) {
+                    // Config in format
+                    const commands = {
+                        "!": "h2",
+                        "#": "h3",
+
+                        "-": "li",
+                        ".": "ul",
+                        "+": "ol",
+                    };
+
+                    // Return value
+                    const doc = {};
+
+                    // Parse
+                    let currentProperty = "";
+                    let currentTag = [];
+
+                    for (const c of f) {
+                        // Handling switching properties
+                        if (c === "=") {
+                            // Flush current tag
+                            currentTag.map(t => doc[currentProperty] += "</" + t + ">");
+
+                            // Switch property
+                            currentProperty = "";
+                            currentTag.push("PROPERTY");
+                        }
+
+                        else if (currentTag.slice(-1)[0] === "PROPERTY") {
+                            if (c === "\n" || c === " ") {
+                                doc[currentProperty] = "";
+                                currentTag.pop();
+                            }
+                            else {
+                                currentProperty += c;
+                            }
+                        }
+
+                        // Else check if c is in the commands lookup
+                        else if (commands[c]) {
+                            // Check if it's the delimiter
+                            if (currentTag.slice(-1)[0] === commands[c]) {
+                                currentTag.pop();
+                                doc[currentProperty] += "</" + commands[c] + ">";
+                                continue;
+                            }
+
+                            // Else push tag
+                            currentTag.push(commands[c]);
+                            doc[currentProperty] += "<" + commands[c] + ">";
+                        }
+
+                        // Else it must be plain text
+                        else {
+                            doc[currentProperty] += c;
+                        }
+
+                    }
+
+                    // Flush current tag
+                    currentTag.map(t => doc[currentProperty] += "</" + t + ">");
+
+                    return doc;
+                }
+
+                document.addEventListener("htmx:afterRequest", (e) => {
+                    if (e.target.id === "main") {
+                        for (const mdtarget of e.target.getElementsByClassName(".blogmd")) {
+                            const mdformat = format(mdtarget.innerText);
+
+                            e.target.innerHTML = `
+                                <h1>${mdformat.title ? mdformat.title : ""}</h1>
+                                <p><em>${mdformat.subtitle ? mdformat.subtitle : ""}</em></p>
+                                <p>${mdformat.date ? mdformat.date : ""} - ${mdformat.time ? mdformat.time : ""}</p>
+                                ${mdformat.content ? mdformat.content : ""}
+                            `;
+                        }
+                    }
+                });
             </script>
         
         </div>
