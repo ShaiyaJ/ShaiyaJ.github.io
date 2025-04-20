@@ -1,9 +1,9 @@
 :root {
     --main-text-c: #222222;
     --side-text-c: #888888;
-    --main-clickable-c: #8888BB;
-    --main-clickable-h-c: #000033;
-    --main-clickable-v-c: #555588;
+    --main-clickable-c: #8888CC;
+    --main-clickable-h-c: #000044;
+    --main-clickable-v-c: #555599;
 
     max-width: 60em;        /* if it's in landscape */
     margin: 20px auto;
@@ -29,18 +29,18 @@
 
 .navbar a {
     font-weight: bolder;
-    color: var(#888888);
+    color: #888888;
     text-decoration: none;
     margin: auto;
 }
 
 .navbar a:visited {
-    color: var(#888888);
+    color: #888888;
     text-decoration: none;
 }
 
 .navbar a:hover {
-    color: var(#000000);
+    color: #000000;
     text-decoration: none;
 }
 
