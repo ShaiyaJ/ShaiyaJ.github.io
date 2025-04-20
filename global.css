@@ -1,9 +1,9 @@
 :root {
     --main-text-c: #222222;
     --side-text-c: #888888;
-    --main-clickable-c: #888888;
-    --main-clickable-h-c: #000000;
-    --main-clickable-v-c: #555555;
+    --main-clickable-c: #8888BB;
+    --main-clickable-h-c: #000033;
+    --main-clickable-v-c: #555588;
 
     max-width: 60em;        /* if it's in landscape */
     margin: 20px auto;
@@ -29,18 +29,18 @@
 
 .navbar a {
     font-weight: bolder;
-    color: var(--main-clickable-c);
+    color: var(#888888);
     text-decoration: none;
     margin: auto;
 }
 
 .navbar a:visited {
-    color: var(--main-clickable-c);
+    color: var(#888888);
     text-decoration: none;
 }
 
 .navbar a:hover {
-    color: var(--main-clickable-h-c);
+    color: var(#000000);
     text-decoration: none;
 }
 
@@ -122,6 +122,7 @@
     flex-shrink: 0;
     width: 25%;
     margin: 30px 0px;
+    font-size: 0.9em;
 }
 
 .blog-main-wrapper {
