@@ -15,25 +15,25 @@ Brief overview and reflections on the development of the seqd library. Alongside
 =content
 ~What is seqd?~
 "
-Seqd is a library that provides user-friendly functions and constants to display ANSI escape sequences and other interactions with the console. These escape sequences makes it possible to style text. You make text bold, italic, strikethrough, blinking, or give the background and foreground different colours. The library also provides function for taking user input and setting the terminal into and out of raw mode.
+Seqd is a library that provides user\-friendly functions and constants to display ANSI escape sequences and other interactions with the console. These escape sequences makes it possible to style text. You make text bold, italic, strikethrough, blinking, or give the background and foreground different colours. The library also provides function for taking user input and setting the terminal into and out of raw mode.
 "
 
 ~Pre-Development History~
 "
-Seqd started in various forms. Long ago I wanted to develop terminal apps that looked pretty, which is how I discovered these sequences existed. Later on I made a small tool using crossterm in Rust called "termsprite" which could print sprites to the terminal. 
+Seqd started in various forms. Long ago I wanted to develop terminal apps that looked pretty, which is how I discovered these sequences existed. Later on I made a small tool using crossterm in Rust called \"termsprite\" which could print sprites to the terminal. 
 "
 
 "
-After developing things in Rust for a small while I decided to return to C. I used a game development library called Raylib and was inspired by this to develop a simple game development library for terminal games. I called this the "aScii engine" but it ended development quite quickly as my enthusiasm for game development wore out.
+After developing things in Rust for a small while I decided to return to C. I used a game development library called Raylib and was inspired by this to develop a simple game development library for terminal games. I called this the \"aScii engine\" but it ended development quite quickly as my enthusiasm for game development wore out.
 "
 
 "
-Instead of scrapping the idea I decided to have a go at writing a single-header library that could also host the documentation inside. 
+Instead of scrapping the idea I decided to have a go at writing a single\-header library that could also host the documentation inside. 
 "
 
 ~Development~
 "
-Development started shortly after, however it was quite slow. I used seqd as a background project while developing some other projects. At one point I had a mass-rewrite of the project. So I coined it as seqd2.0 for a while before changing it back to avoid confusion.
+Development started shortly after, however it was quite slow. I used seqd as a background project while developing some other projects. At one point I had a mass rewrite of the project. So I coined it as seqd2.0 for a while before changing it back to avoid confusion.
 "
 
 "
@@ -41,7 +41,7 @@ I used this opportunity to learn a lot more about the C standard library. And, w
 "
 
 "
-I aimed for this library to be as user-friendly as possible. The backbone of this user-friendliness is the lack of memory management required by the user on the end of the library. There are two character pointers which get reallocated to store input and buffered output, these are the only two pointers that someone would have to free if they don't use seqd for the entire lifetime of their program (otherwise they're freed by exiting). 
+I aimed for this library to be as user\-friendly as possible. The backbone of this user\-friendliness is the lack of memory management required by the user on the end of the library. There are two character pointers which get reallocated to store input and buffered output, these are the only two pointers that someone would have to free if they don't use seqd for the entire lifetime of their program (otherwise they're freed by exiting). 
 "
 
 ~Release~
