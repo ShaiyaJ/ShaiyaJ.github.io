@@ -152,4 +152,20 @@
     padding-left: 1em;
 }
 
+/* Portfolio */
+.proj-image {
+    float: right;
+    width: 15em;
+    height: auto;
+    image-rendering: pixelated;
 
+    margin-left: 3em;
+
+    box-shadow: -10px 10px 15px #BBBBBBBB;
+    overflow: hidden;
+
+    border-width: 1px;
+    border-color: #EEE;
+    border-radius: 20px;
+    border-style: solid;
+}
