@@ -24,6 +24,9 @@ async function fetchPostContent() {
     const main = document.getElementById("main");
     const loc = window.location.search.substring(1).replaceAll(":", "/");
 
+    if (loc === "")
+        return;
+
     // Content
     try {
         await fetch(`https://raw.githubusercontent.com/ShaiyaJ/ShaiyaJ.github.io/refs/heads/master/blog/blogcontent/${loc}`)

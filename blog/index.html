@@ -9,6 +9,7 @@
     <script src="../components/footer.js"></script>
     <script src="./postlist.js"></script>
     <script src="./postcontent.js"></script>
+    <script src="./contenttypes/markdown.js"></script>
 </head>
 <body>
     <!-- loading navbar -->
@@ -25,7 +26,14 @@
 
 
             <!-- main content -->
-            <article class="blog-main-wrapper" id="main" is="shaiya-postcontent"></article>
+            <article class="blog-main-wrapper" id="main" is="shaiya-postcontent">
+                <section is="shaiya-markdown">
+                    # test1
+                    ## test2
+                    testp
+                    testp2
+                </section>
+            </article>
         </div>
 
     </div>
