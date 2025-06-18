@@ -81,3 +81,5 @@ async function fetchPosts(path = "blog/blogcontent", parentElement = POSTLIST_EL
         console.error(`Error loading path ${path}:`, err);
     }
 }
+
+// TODO: perhaps have this view be a "organised" one, then have another be a "chronological" one

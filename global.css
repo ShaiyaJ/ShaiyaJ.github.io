@@ -44,6 +44,16 @@
     text-decoration: none;
 }
 
+@media only screen and ((max-width: 1079px) or (orientation: portrait)) {
+    .navbar {
+        border-radius: 50px;
+        box-shadow: -5px 10px 30px #BBBBBBBB;
+        overflow: hidden;
+        padding: 20px 20px;
+        margin: 50px 0px;
+    }
+}
+
 
 
 /* Footer Component */
