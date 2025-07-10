@@ -3,43 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaiya. J's website</title>
-    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+    <title>Shaiya. J's Website</title>
+    <script src="./components/navbar.js"></script>
+    <script src="./components/footer.js"></script>
     <link rel="stylesheet" type="text/css" href="./global.css">
 </head>
 <body>
     <!-- loading navbar -->
-    <div id="navbar" class="navbar"
-        hx-get="/components/navbar.html"
-        hx-target="#navbar"
-        hx-swap="innerHTML"
-        hx-trigger="load once"
-    ></div>
+    <nav id="navbar" class="navbar" is="shaiya-navbar"></nav>
 
     <!-- main content -->
     <div class="main">
         <h1>Shaiya J.</h1>
-        <h2>About me</h2>
-        <p>I'm a hobbyist programmer who is focused on both high and low level development. I intend this website to complement my Github - with my portfolio and blog providing a formal presentation and informal musings on my past projects.</p>
-        <p>My activity may be very patchy, as I'm attending school and don't want to get too sidetracked.</p>
+
+        <h2>About Me</h2>
+        <p>I'm a hobbyist programmer who is focused on both high and low-level development. I intend this website to complement my Github - allowing me to present my projects in a way that Github doesn't allow.</p>
+
         <h3>Programming</h3>
-        <p>I don't really have a specific area I stick to when making things - I just work on whatever I have ideas for. Typically this will be lower level things in C/Rust, but sometimes it's just small scripts written in Python or web utilities written in Javascript. I don't have many completed projects at the moment since I have the tendency to jump ship as soon as I have a new idea, but when I do complete something that I think is neat I'll put it on the <a href="/blog">blog</a> or <a href="portfolio">portfolio</a>.</p>
-        <p>My main interests at the moment are in low-level programming and peer to peer networking. So, when things do get finished, expect to see a lot of that. I also find myself accidentally making games using obscure/unconventional methods (although, I wouldn't consider myself a game developer at heart). All of these projects are hobbyist, I consider them learning experiences for me to take forward into future projects.</p>
-        <h3>Other hobbies/pastimes</h3>
-        <p>I may talk about my other hobbies on the blog, especially if I make projects geared towards those other hobbies.</p>
-        <p>My main hobbies are phonetics and literature. I particularly like the works of <a href="https://en.wikipedia.org/wiki/Ry%C5%ABnosuke_Akutagawa">芥川龍之介</a> (Ryūnosuke Akutagawa).</p>
+        <p>I enjoy working across various domains. Typically this will be lower-level projects in C/Rust, but sometimes it's just small scripts written in Python or web utilities written in Javascript.</p>
+        <p>I aim to do more work in compiler design and operating systems, as I find these lower-level tasks very interesting.</p>
+        
+        <p>My <a href="portfolio">portfolio</a> hosts a brief overview of my projects. The <a href="blog">blog</a> may also showcase some of my projects in more technical detail than my portfolio allows for.</p>
+
+        <h3>Skills & Tools</h3>
+        <ul>
+            <li>Languages: C, Rust, Python, Java, JavaScript, TypeScript, React</li>
+            <li>Tools: Git, Github, Linux, Cargo, Pypi</li>
+            <li>Interests: Compilers, operating systems, P2P networking, build utilities</li>
+            <li>Experience: 2 years tutoring experience in Computer Science</li>
+        </ul>
+        
+        <p>I’m currently open to opportunities, especially if it's in systems programming, developer tooling, or educational technology. Feel free to <a href="contact">get in touch</a>.</p>
+
+        <h3>Hobbies and Pastimes</h3>
+        <p>My main hobbies are phonetics and literature. I aim one day to be able to use my phonetics knowledge to help other people. I also dabble in the guitar.</p>
         <p>My favourite pastime is Mahjong. I play online and in real life, and I sometimes teach other people how to play.</p>
-        <h2>Using this website</h2>
-        <p>Parts of the website are still under progress. But there is a working blog, which is where you'll find most of my incoherent ramblings.</p>
-        <p>I wrote this website to be very quickly functional, so parts of it will probably change as I focus on (HEAVILY) cleaning it up. I've been wanting a place to display my other projects in a clean(er) format than Github repos allows. I am by no means a web developer - so development may be slow.</p>
     </div>
 
     <!-- loading footer -->
-    <div id="footer" class="footer"
-        hx-get="/components/footer.html"
-        hx-target="#footer"
-        hx-swap="innerHTML"
-        hx-trigger="load once"
-    ></div>
+    <footer id="footer" class="footer" is="shaiya-footer"></footer>
 </body>
 </html>
