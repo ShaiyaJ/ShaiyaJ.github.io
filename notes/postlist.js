@@ -22,7 +22,7 @@ customElements.define("shaiya-postlist", Postlist, { extends: "nav" });
 
 
 
-async function fetchPosts(path = "blog/blogcontent", parentElement = POSTLIST_ELEMENT.body) {
+async function fetchPosts(path = "notes/content", parentElement = POSTLIST_ELEMENT.body) {
     const API_URL = `https://api.github.com/repos/ShaiyaJ/ShaiyaJ.github.io/contents/${path}`;
 
     try {
@@ -49,12 +49,6 @@ async function fetchPosts(path = "blog/blogcontent", parentElement = POSTLIST_EL
                 link.textContent = item.name;
                 link.style.display = "block";
                 link.classList.add("padded-dir");
-
-                // HTMX
-                link.setAttribute("hx-trigger", "click");
-                link.setAttribute("hx-get", `./blogcontent/${path}`);
-                link.setAttribute("hx-target", "#main");
-                link.setAttribute("hx-push-url", "true");
 
                 // Append
                 parentElement.appendChild(link);

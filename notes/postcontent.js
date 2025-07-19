@@ -29,7 +29,7 @@ async function fetchPostContent() {
 
     // Content
     try {
-        await fetch(`https://raw.githubusercontent.com/ShaiyaJ/ShaiyaJ.github.io/refs/heads/master/blog/blogcontent/${loc}`)
+        await fetch(`https://raw.githubusercontent.com/ShaiyaJ/ShaiyaJ.github.io/refs/heads/master/notes/content/${loc}`)
             .then(res => {
                 return res.text();
             }).then(text => {

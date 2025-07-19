@@ -1,6 +1,6 @@
 const NAV_COMPONENT = `
 <a href="/">Home</a>
-<a href="/blog">Blog</a>
+<a href="/notes">Notes</a>
 <a href="/portfolio">Portfolio</a>
 <a href="/contact">Contact</a>
 `;
