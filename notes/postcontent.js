@@ -1,18 +1,31 @@
 const POSTCONTENT_COMPONENT = ``;
 
-const POSTCONTENT_ELEMENT = new DOMParser().parseFromString(POSTCONTENT_COMPONENT, "text/html");
-
 class Postcontent extends HTMLElement {
     constructor() {
         super();
     }
-
-    connectedCallback() {
-        fetchPostContent().then(() => {
-            Array.from(POSTCONTENT_ELEMENT.body.childNodes).forEach(node => {
+    
+    loadPost() {
+        fetchPostContent().then(raw => {
+            this.textContent = "";
+            
+            if (raw === undefined) {
+                raw = "";
+            }
+            
+            let POST_DOM = new DOMParser().parseFromString(raw, "text/html");
+            
+            Array.from(POST_DOM.body.childNodes).forEach(node => {
+                console.log(this);  
                 this.appendChild(node.cloneNode(true));
             });
-        });
+        });    
+    }
+
+    connectedCallback() {
+        this.loadPost();
+        window.addEventListener("popstate", () => this.loadPost());
+        window.addEventListener("pushstate", () => this.loadPost());
     }
 }
 
@@ -28,19 +41,10 @@ async function fetchPostContent() {
         return;
 
     // Content
-    try {
-        await fetch(`https://raw.githubusercontent.com/ShaiyaJ/ShaiyaJ.github.io/refs/heads/master/notes/content/${loc}`)
-            .then(res => {
-                return res.text();
-            }).then(text => {
-                const postraw_element = new DOMParser().parseFromString(text, "text/html");
-
-                Array.from(postraw_element.body.childNodes).forEach(node => {
-                    POSTCONTENT_ELEMENT.body.appendChild(node.cloneNode(true));
-                });
-            });
-    } catch (err) {
-        console.error("Failed to grab post contents");
-        console.error(err);
-    }
+    return await fetch(`https://raw.githubusercontent.com/ShaiyaJ/ShaiyaJ.github.io/refs/heads/master/notes/content/${loc}`)
+        .then(res => {
+            return res.text();
+        }).then(textres => {
+            return textres;
+        });
 }

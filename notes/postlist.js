@@ -1,18 +1,10 @@
-const POSTLIST_COMPONENT = ``;
-
-const POSTLIST_ELEMENT = new DOMParser().parseFromString(POSTLIST_COMPONENT, "text/html");
-
 class Postlist extends HTMLElement {
     constructor() {
         super();
     }
 
     connectedCallback() {
-        fetchPosts().then( () => {
-            Array.from(POSTLIST_ELEMENT.body.childNodes).forEach(node => {
-                this.appendChild(node.cloneNode(true));
-            });
-        });
+        populatePosts("", this);
     }
 }
 
@@ -20,60 +12,55 @@ customElements.define("shaiya-postlist", Postlist, { extends: "nav" });
 
 
 
+async function populatePosts(path = "", parentElement = null) {
+    if (parentElement === null)
+        parentElement = document.createElement("div");
 
+    await fetch(`https://api.github.com/repos/ShaiyaJ/ShaiyaJ.github.io/contents/notes/content/${path}`)
+        .then(res => {
+            return res.json();
+        }).then(items => {
+            for (const item of items) {
+                if (item.type === "file") {
+                    const link = document.createElement("a");
 
-async function fetchPosts(path = "notes/content", parentElement = POSTLIST_ELEMENT.body) {
-    const API_URL = `https://api.github.com/repos/ShaiyaJ/ShaiyaJ.github.io/contents/${path}`;
+                    // URL info
+                    const path = item.path
+                        .split("/").slice(2)
+                        .join(":");
 
-    try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-            console.error(`Failed to fetch ${path}: ${response.status}`);
-            return;
-        }
+                    link.href = "#";
+                    
+                    link.onclick = (e) => {
+                        history.pushState({}, "", `?${path}`);
+                        window.dispatchEvent(new Event("pushstate"));
+                        e.preventDefault();
+                    };
 
-        const items = await response.json();
+                    // Styling
+                    link.textContent = item.name;
+                    link.style.display = "block";
+                    link.classList.add("padded-dir");
 
-        for (const item of items) {
-            if (item.type === "file") {
-                const link = document.createElement("a");
+                    // Append
+                    parentElement.appendChild(link);
 
-                // URL info
-                const path = item.path
-                    .split("/").slice(2)
-                    .join(":");
+                } else if (item.type === "dir") {
+                    const details = document.createElement("details");
+                    details.classList.add("padded-dir");
 
-                link.href = `./?${path}`;
+                    const summary = document.createElement("summary");
+                    summary.textContent = item.name;
 
-                // Styling
-                link.textContent = item.name;
-                link.style.display = "block";
-                link.classList.add("padded-dir");
+                    details.appendChild(summary);
 
-                // Append
-                parentElement.appendChild(link);
+                    parentElement.appendChild(details);
 
-            } else if (item.type === "dir") {
-                const details = document.createElement("details");
-                details.classList.add("padded-dir");
-
-                const summary = document.createElement("summary");
-                summary.textContent = item.name;
-
-                details.appendChild(summary);
-
-                parentElement.appendChild(details);
-
-                // Recurse into subdirectory
-                await fetchPosts(item.path, details);
-            } else {
-                console.error(`Unknown item type: ${item.name}`);
+                    // Recurse into subdirectory
+                    return populatePosts(item.path, details);
+                }
             }
-        }
-
-    } catch (err) {
-        console.error(`Error loading path ${path}:`, err);
-    }
+        });
 }
 
 // TODO: perhaps have this view be a "organised" one, then have another be a "chronological" one
