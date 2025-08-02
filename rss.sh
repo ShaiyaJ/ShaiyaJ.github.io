@@ -9,7 +9,10 @@ echo '    <description>Collection of random things that I work on and do in my f
 
 # Generating an rss feed
 
-find ./notes/content -type f -printf "%T@ %p\n" | sort -nr | while read -r ts path; do
+find ./notes/content -type f | while read -r path; do
+    ts=$(git log --diff-filter=A --format="%ct" -- "$path")
+    echo "$ts $path"
+done | sort -nr | while read -r ts path; do
     echo '    <item>'
     echo "        <title>${path##*/}</title>"
     echo "        <link>https://shaiyaj.github.io/notes/?$(echo "${path#./notes/content/}" | tr '/' ':' | sed 's/ /%20/g')</link>"
