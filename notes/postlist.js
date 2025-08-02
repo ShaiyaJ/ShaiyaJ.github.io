@@ -57,7 +57,6 @@ async function populatePosts(path = "", parentElement = null) {
                     parentElement.appendChild(details);
 
                     // Recurse into subdirectory
-                    console.log("recurse");
                     return populatePosts(item.path, details);
                 }
             }

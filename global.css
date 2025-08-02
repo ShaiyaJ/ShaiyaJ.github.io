@@ -158,7 +158,7 @@
     }
 }
 
-.padded-dir {
+.padded-dir > .padded-dir {
     padding-left: 1em;
 }
 
