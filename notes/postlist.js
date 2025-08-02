@@ -4,7 +4,7 @@ class Postlist extends HTMLElement {
     }
 
     connectedCallback() {
-        populatePosts("", this);
+        populatePosts("notes/content/", this);
     }
 }
 
@@ -16,7 +16,7 @@ async function populatePosts(path = "", parentElement = null) {
     if (parentElement === null)
         parentElement = document.createElement("div");
 
-    await fetch(`https://api.github.com/repos/ShaiyaJ/ShaiyaJ.github.io/contents/notes/content/${path}`)
+    await fetch(`https://api.github.com/repos/ShaiyaJ/ShaiyaJ.github.io/contents/${path}`)
         .then(res => {
             return res.json();
         }).then(items => {
@@ -57,6 +57,7 @@ async function populatePosts(path = "", parentElement = null) {
                     parentElement.appendChild(details);
 
                     // Recurse into subdirectory
+                    console.log("recurse");
                     return populatePosts(item.path, details);
                 }
             }
