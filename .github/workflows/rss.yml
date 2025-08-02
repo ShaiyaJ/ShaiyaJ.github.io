@@ -1,0 +1,28 @@
+name: Generate RSS
+
+on:
+  push:
+    paths:
+      - 'notes/content/**'
+      - 'rss.sh'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v3
+      
+      - name: Run RSS sh
+        run: bash ./rss.sh > ./notes/feed.xml
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git add ./notes/feed.xml
+          git commit -m "Update RSS feed" || echo "No changes"
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
