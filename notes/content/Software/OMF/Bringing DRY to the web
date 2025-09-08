@@ -1,4 +1,4 @@
-<shaiya-markdown>
+<section is="shaiya-markdown">
 
 # Bringing DRY to the web
 2025/09/08 - 12:56
@@ -51,4 +51,4 @@ Sadly, until then, I'll keep developing this small tool.
 [5] https://github.com/ShaiyaJ/omf
 [6] https://en.wikipedia.org/wiki/Pareto_principle
 
-</shaiya-markdown>
+</section>

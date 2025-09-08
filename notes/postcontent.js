@@ -16,7 +16,6 @@ class Postcontent extends HTMLElement {
             let POST_DOM = new DOMParser().parseFromString(raw, "text/html");
             
             Array.from(POST_DOM.body.childNodes).forEach(node => {
-                console.log(this);  
                 this.appendChild(node.cloneNode(true));
             });
         });    
