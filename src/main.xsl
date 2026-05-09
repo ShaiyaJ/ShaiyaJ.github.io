@@ -99,6 +99,7 @@
                             <title><xsl:value-of select="./title" /></title>
                             <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./small-title" /></link>
                             <description><xsl:value-of select="./description" /></description>
+                            <pubdate><xsl:value-of select="./date-posted" /></pubdate>
                         </item>
                     </xsl:for-each>
                 </channel>

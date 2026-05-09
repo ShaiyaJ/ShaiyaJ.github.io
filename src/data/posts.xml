@@ -8,22 +8,10 @@
         <description></description>
         <category></category>
 
-        <date-posted></date-posted>
+        <date-posted>dd text-repr-m yyyy hh:mm:ss timezone</date-posted> (see RFC 822)
         <date-edited></date-edited>
 
         <content></content>
     </post>
     -->
-
-    <post>
-        <title>Test content</title>
-        <short-title>blog-test</short-title>
-        <description>A test for this blog!</description>
-        <category>tests</category>
-
-        <date-posted></date-posted>
-        <date-edited></date-edited>
-
-        <content><h1>Hello</h1></content>
-    </post>
 </posts>
