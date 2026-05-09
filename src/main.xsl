@@ -44,15 +44,67 @@
         </xsl:call-template>
 
         <!-- Generate blog page -->
+        <xsl:variable name="post-list">
+            <xsl:perform-sort select="/posts/*">
+                <xsl:sort select="date-posted" order="descending" />
+            </xsl:perform-sort>
+        </xsl:variable>
+
         <xsl:call-template name="page">
             <xsl:with-param name="filename">blog/index</xsl:with-param>
             <xsl:with-param name="title">ShaiyaJ::Blog</xsl:with-param>
 
             <xsl:with-param name="content">
-                <h1>Shaiya's Blog</h1>
-                <p>This is the blog page content.</p>
+                <h1>Blog</h1>
+                <xsl:for-each select="$post-list/post">
+                    <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a>
+                </xsl:for-each>
             </xsl:with-param>
         </xsl:call-template>
+
+        <!-- Generate posts page -->
+        <xsl:for-each select="/posts/*">
+            <xsl:call-template name="page">
+                <xsl:with-param name="filename">blog/posts/<xsl:value-of select="./short-title" /></xsl:with-param>
+                <xsl:with-param name="title">ShaiyaJ::Blog::<xsl:value-of select="./title" /></xsl:with-param>
+
+                <xsl:with-param name="content">
+                    <h1><xsl:value-of select="./title" /></h1>
+                    <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
+
+                    <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->
+                        <xsl:for-each select="/posts/*">
+                            <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a>
+                        </xsl:for-each>
+                    </aside>
+
+                    <article>
+                        <xsl:value-of select="./content" />
+                    </article>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:for-each>
+
+        <!-- Generate blog rss -->
+        <xsl:result-document method="xml" omit-xml-declaration="no" href="docs/blog/feed.rss">
+            <rss version="2.0">
+
+                <channel>
+                    <title>ShaiyaJ's Blog</title>
+                    <link>https://ShaiyaJ.github.io/</link>
+                    <description>A blog for a small hobbyist developer.</description>
+
+                    <xsl:for-each select="$post-list/post">
+                        <item>
+                            <title><xsl:value-of select="./title" /></title>
+                            <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./small-title" /></link>
+                            <description><xsl:value-of select="./description" /></description>
+                        </item>
+                    </xsl:for-each>
+                </channel>
+
+            </rss> 
+        </xsl:result-document>
 
         <!-- Generate contact page -->
         <xsl:call-template name="page">

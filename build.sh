@@ -1,1 +1,2 @@
-saxonb-xslt -xsl:src/main.xsl -s:src/dummy.xml -ext:on
+rm -rf docs/*
+saxonb-xslt -xsl:src/main.xsl -s:src/data/posts.xml -ext:on

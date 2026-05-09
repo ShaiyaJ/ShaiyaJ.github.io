@@ -3,12 +3,27 @@
 <posts>
     <!--
     <post>
-i       <title></title>
+        <title></title>
+        <short-title></short-title>
+        <description></description>
+        <category></category>
+
         <date-posted></date-posted>
         <date-edited></date-edited>
-        <category></category>
 
         <content></content>
     </post>
     -->
+
+    <post>
+        <title>Test content</title>
+        <short-title>blog-test</short-title>
+        <description>A test for this blog!</description>
+        <category>tests</category>
+
+        <date-posted></date-posted>
+        <date-edited></date-edited>
+
+        <content><h1>Hello</h1></content>
+    </post>
 </posts>
