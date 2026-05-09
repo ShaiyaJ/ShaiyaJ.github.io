@@ -5,10 +5,12 @@
         <xsl:param name="title" />
         <xsl:param name="content" />
 
-        <xsl:result-document href="docs/{$filename}.html">
+        <xsl:result-document method="html" encoding="utf-8" href="docs/{$filename}.html">
+            <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
             <html>
                 <head>
                     <title><xsl:value-of select="$title" /></title>
+                    <link rel="stylesheet" href="/global.css" />
                 </head>
                 
                 <body>

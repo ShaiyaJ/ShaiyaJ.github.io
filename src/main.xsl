@@ -65,7 +65,7 @@
         <!-- Generate posts page -->
         <xsl:for-each select="/posts/*">
             <xsl:call-template name="page">
-                <xsl:with-param name="filename">blog/posts/<xsl:value-of select="./short-title" /></xsl:with-param>
+                <xsl:with-param name="filename">blog/posts/<xsl:value-of select="./short-title" />/index</xsl:with-param>
                 <xsl:with-param name="title">ShaiyaJ::Blog::<xsl:value-of select="./title" /></xsl:with-param>
 
                 <xsl:with-param name="content">
