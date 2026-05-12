@@ -76,6 +76,7 @@ h1, h2, h3 {
 nav {
     display: flex;
     justify-content: space-evenly;
+    margin: 1em 0;
 }
 
 nav a {
@@ -83,6 +84,10 @@ nav a {
 
     &:hover {
         color: var(--nav-link-hover);
+    }
+
+    &:visted {
+        color: var(--nav-link);
     }
 }
 
