@@ -14,4 +14,27 @@
         <content></content>
     </post>
     -->
+    <post>
+        <title>One</title>
+        <short-title>one</short-title>
+        <description>wan</description>
+        <category>numbers</category>
+
+        <date-posted>01 Oct 2008 01:01:01 GMT</date-posted>
+        <date-edited>01 Oct 2008 01:01:01 GMT</date-edited>
+
+        <content>bob</content>
+    </post>
+
+    <post>
+        <title>Two</title>
+        <short-title>two</short-title>
+        <description>tu</description>
+        <category>numbers</category>
+
+        <date-posted>01 Oct 2080 01:01:01 GMT</date-posted>
+        <date-edited>01 Oct 2080 01:01:01 GMT</date-edited>
+
+        <content>Bobseld</content>
+    </post>
 </posts>
