@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<posts>
+    <!--
+    <post>
+        <title></title>
+        <short-title></short-title>
+        <description></description>
+        <category></category>
+
+        <date-posted>dd text-repr-m yyyy hh:mm:ss timezone</date-posted> (see RFC 822)
+        <date-edited></date-edited>
+
+        <content></content>
+    </post>
+    -->
+</posts>
