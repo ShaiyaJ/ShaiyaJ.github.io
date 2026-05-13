@@ -1,9 +1,7 @@
 name: Generate site
 
 on:
-  push:
-    paths:
-      - 'src'
+  push
 
 jobs:
   build:
