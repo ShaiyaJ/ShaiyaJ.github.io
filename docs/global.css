@@ -1,0 +1,97 @@
+:root {
+    --background: #FFF;
+    --text: #222;
+    --text-secondary: #888;
+
+    --link: #77C;
+    --link-hover: #44A;
+    --title: #444;
+
+    --nav-link: #888;
+    --nav-link-hover: #555;
+}
+
+body {
+    max-width: 60em;
+    margin: auto;
+
+    color: var(--text);
+    font-family: "dcRoboto", Helvetica, sans-serif;
+
+    /*
+    &:@media only screen and ((max-width: 500px) or (orientation: portrait)) {
+        max-width: 1279px;
+    }
+    */
+}
+
+main {
+    margin: 1em 0;
+    padding: 2em;
+
+    border-radius: 50px;
+    box-shadow: -10px 20px 30px #BBB;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    /*
+    &:@media only screen and ((max-width: 500px) or (orientation: portrait)) {
+        margin: 0;
+        padding: 0 2em;
+
+        border-radius: 0;
+        box-shadow: none;
+    }
+    */
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+        color: var(--link-hover);
+    }
+
+    &:visited {
+        color: var(--link);
+    }
+}
+
+h1, h2, h3 {
+    color: var(--title);
+}
+
+
+
+/* Component-specific CSS */
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+}
+
+nav a {
+    color: var(--nav-link);
+
+    &:hover {
+        color: var(--nav-link-hover);
+    }
+
+    &:visted {
+        color: var(--nav-link);
+    }
+}
+
+footer {
+    color: var(--text-secondary);
+    text-align: center;
+}
