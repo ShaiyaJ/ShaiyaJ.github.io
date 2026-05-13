@@ -94,13 +94,19 @@
                     <link>https://ShaiyaJ.github.io/</link>
                     <description>A blog for a small hobbyist developer.</description>
 
-                    <xsl:for-each select="$post-list/post">
-                        <item>
-                            <title><xsl:value-of select="./title" /></title>
-                            <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./small-title" /></link>
-                            <description><xsl:value-of select="./description" /></description>
-                            <pubdate><xsl:value-of select="./date-posted" /></pubdate>
-                        </item>
+                    <xsl:for-each select="0 to 5">
+                        <xsl:variable name="currentPost" select="$post-list/post[.]"></xsl:variable>
+
+                        <xsl:if test="$currentPost != ''">
+
+                            <item>
+                                <title><xsl:value-of select="$currentPost/title" /></title>
+                                <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="$currentPost/small-title" /></link>
+                                <description><xsl:value-of select="$currentPost/description" /></description>
+                                <pubdate><xsl:value-of select="$currentPost/date-posted" /></pubdate>
+                            </item>
+
+                        </xsl:if>
                     </xsl:for-each>
                 </channel>
 
