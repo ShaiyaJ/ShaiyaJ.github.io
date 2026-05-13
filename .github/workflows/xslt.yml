@@ -1,4 +1,4 @@
-name: Generate RSS
+name: Generate site
 
 on:
   push:
