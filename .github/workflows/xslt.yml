@@ -3,7 +3,7 @@ name: Generate site
 on:
   push:
     paths:
-      - 'build.sh'
+      - 'src'
 
 jobs:
   build:
