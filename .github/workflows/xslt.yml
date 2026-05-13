@@ -16,6 +16,11 @@ jobs:
 
       - name: Set up saxon
         run: sudo apt install libsaxonb-java
+
+      - name: Update contents
+        run: | 
+          git pull origin master
+          rm -rf ./docs/*
       
       - name: Build XSLT to HTML
         run: bash ./build.sh
