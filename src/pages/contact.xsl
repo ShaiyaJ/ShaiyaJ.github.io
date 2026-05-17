@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
 <xsl:call-template name="page">
     <xsl:with-param name="filename">contact/index</xsl:with-param>
     <xsl:with-param name="title">ShaiyaJ::Contact</xsl:with-param>
