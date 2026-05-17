@@ -14,13 +14,13 @@
                 </head>
                 
                 <body>
-                    <xsl:call-template name="navbar" />
+                    <xsl:include href="navbar.html" />
 
                     <main>
                         <xsl:copy-of select="$content" />
                     </main>
 
-                    <xsl:call-template name="footer" />
+                    <xsl:include href="footer.html" />
                 </body>
             </html>
         </xsl:result-document>
