@@ -14,6 +14,7 @@
 body {
     max-width: 60em;
     margin: auto;
+    padding: 0 1em;
 
     color: var(--text);
     font-family: "dcRoboto", Helvetica, sans-serif;
@@ -86,7 +87,7 @@ nav a {
         color: var(--nav-link-hover);
     }
 
-    &:visted {
+    &:visited {
         color: var(--nav-link);
     }
 }
