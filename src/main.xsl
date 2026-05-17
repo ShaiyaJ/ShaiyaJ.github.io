@@ -4,7 +4,7 @@
 
     <xsl:template match="/">
         <!-- Generate main page -->
-        <xsl:include href="./pages/index.xsl" />
+        <xsl:copy-of href="doc('./pages/index.xsl')/*" />
 
         <!-- Generate blog pages -->
         <xsl:variable name="post-list">
@@ -13,7 +13,7 @@
             </xsl:perform-sort>
         </xsl:variable>
 
-        <xsl:include href="src/pages/blog.xsl" />
+        <xsl:copy-of href="doc('./pages/blog.xsl')/*" />
 
         <!-- Generate each post on a separate page -->
         <xsl:for-each select="/posts/*">
@@ -67,7 +67,7 @@
         </xsl:result-document>
 
         <!-- Generate contact page -->
-        <xsl:include href="./pages/contact.xsl" />
+        <xsl:copy-of href="doc('./pages/contact.xsl')/*" />
 
     </xsl:template>
 </xsl:stylesheet>
