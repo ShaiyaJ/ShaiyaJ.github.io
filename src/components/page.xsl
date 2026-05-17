@@ -15,13 +15,13 @@
                 </head>
                 
                 <body>
-                    <xsl:include href="navbar.html" />
+                    <xsl:copy-of select="doc('navbar.html')/*/node()" />
 
                     <main>
                         <xsl:copy-of select="$content" />
                     </main>
 
-                    <xsl:include href="footer.html" />
+                    <xsl:copy-of select="doc('footer.html')/*/node()" />
                 </body>
             </html>
         </xsl:result-document>
