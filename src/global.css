@@ -86,7 +86,7 @@ nav a {
         color: var(--nav-link-hover);
     }
 
-    &:visted {
+    &:visited {
         color: var(--nav-link);
     }
 }
