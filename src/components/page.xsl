@@ -10,6 +10,7 @@
             <html>
                 <head>
                     <title><xsl:value-of select="$title" /></title>
+                    <link rel="icon" href="avatars.githubusercontent.com/u/93013772" type="image/png" />
                     <link rel="stylesheet" href="/global.css" />
                 </head>
                 

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:include href="components/page.xsl"/>
-    <xsl:include href="components/navbar.xsl"/>
-    <xsl:include href="components/footer.xsl"/>
 
     <xsl:template match="/">
         <!-- Generate main page -->
