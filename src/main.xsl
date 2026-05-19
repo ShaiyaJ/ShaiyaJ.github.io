@@ -92,7 +92,7 @@
 
                     <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->
                         <xsl:for-each select="/posts/*">
-                            <p>(<xsl:value-of select="./category" />) <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a><p>
+                            <p>(<xsl:value-of select="./category" />) <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a></p>
                         </xsl:for-each>
                     </aside>
 
