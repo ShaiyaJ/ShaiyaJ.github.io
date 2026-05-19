@@ -54,6 +54,7 @@
 
             <xsl:with-param name="content">
                 <h1>Blog</h1>
+                <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
 
                 <table>
                     <tr>
@@ -85,11 +86,13 @@
 
                 <xsl:with-param name="content">
                     <h1><xsl:value-of select="./title" /></h1>
+                    <p>in <xsl:value-of select="./category" /></p>
+                    <p>Posted: <xsl:value-of select="./date-posted" /> | Edited: <xsl:value-of select="./date-edited" /></p>
                     <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
 
                     <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->
                         <xsl:for-each select="/posts/*">
-                            <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a>
+                            <p>(<xsl:value-of select="./category" />) <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a><p>
                         </xsl:for-each>
                     </aside>
 
