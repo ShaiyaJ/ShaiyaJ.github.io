@@ -54,9 +54,26 @@
 
             <xsl:with-param name="content">
                 <h1>Blog</h1>
-                <xsl:for-each select="$post-list/post">
-                    <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a>
-                </xsl:for-each>
+
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date Posted</th>
+                        <th>Last Edited</th>
+                    </tr>
+
+                    <xsl:for-each select="$post-list/post">
+                        <tr>
+                            <td><a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a></td>
+                            <td><xsl:value-of select="./category" /></td>
+                            <td><xsl:value-of select="./date-posted" /></td>
+                            <td><xsl:value-of select="./date-edited" /></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+
+
             </xsl:with-param>
         </xsl:call-template>
 
