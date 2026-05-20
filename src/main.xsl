@@ -70,6 +70,7 @@
                             <td><xsl:value-of select="./category" /></td>
                             <td><xsl:value-of select="./date-posted" /></td>
                             <td><xsl:value-of select="./date-edited" /></td>
+                            <!-- TODO: description? -->
                         </tr>
                     </xsl:for-each>
                 </table>
@@ -88,6 +89,7 @@
                     <h1><xsl:value-of select="./title" /></h1>
                     <p>in <xsl:value-of select="./category" /></p>
                     <p>Posted: <xsl:value-of select="./date-posted" /> | Edited: <xsl:value-of select="./date-edited" /></p>
+                    <!-- TODO: description? -->
                     <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
 
                     <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->

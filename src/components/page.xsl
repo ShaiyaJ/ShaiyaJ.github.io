@@ -12,6 +12,7 @@
                     <title><xsl:value-of select="$title" /></title>
                     <link rel="icon" href="https://avatars.githubusercontent.com/u/93013772" type="image/png" />
                     <link rel="stylesheet" href="/global.css" />
+                    <link rel="alternate" type="application/rss" href="/blog/feed.rss" />
                 </head>
                 
                 <body>
