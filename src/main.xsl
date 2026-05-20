@@ -87,8 +87,8 @@
 
                 <xsl:with-param name="content">
                     <h1><xsl:value-of select="./title" /></h1>
-                    <p>in <xsl:value-of select="./category" /></p>
                     <p>Posted: <xsl:value-of select="./date-posted" /> | Edited: <xsl:value-of select="./date-edited" /></p>
+                    <p>in <xsl:value-of select="./category" /></p>
                     <!-- TODO: description? -->
                     <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
 
