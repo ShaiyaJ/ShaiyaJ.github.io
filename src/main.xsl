@@ -99,7 +99,7 @@
                     </aside>
 
                     <article>
-                        <xsl:value-of select="./content/node()" />
+                        <xsl:copy-of select="./content/node()" />
                     </article>
                 </xsl:with-param>
             </xsl:call-template>
