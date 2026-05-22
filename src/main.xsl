@@ -42,9 +42,25 @@
         </xsl:call-template>
 
         <!-- Generate blog pages -->
+        <xsl:function name="convertRFC" as="xs:dateTime">
+            <xsl:param name="date-time" as="xs:string"/> <!-- Tue, 9 Apr 2019 00:07:24 +1200 (NZST) -->
+            <xsl:variable name="months" select="'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'" as="xs:string*"/>
+            <!-- https://stackoverflow.com/questions/9352003/rfc-2822-date-regex -->
+            <xsl:analyze-string select="$date-time"
+                regex="^(?:(Sun|Mon|Tue|Wed|Thu|Fri|Sat),\s+)?(0[1-9]|[1-2]?[0-9]|3[01])\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(19[0-9]{{2}}|[2-9][0-9]{{3}})\s+(2[0-3]|[0-1][0-9]):([0-5][0-9])(?::(60|[0-5][0-9]))?\s+([-\+][0-9]{{2}}[0-5][0-9]|(?:UT|GMT|(?:E|C|M|P)(?:ST|DT)|[A-IK-Z]))(\s+|\(([^\(\)]+|\\\(|\\\))*\))*$">
+                <xsl:matching-substring>
+                    <xsl:sequence select="xs:dateTime(concat(format-number(xs:integer(regex-group(4)), '0001'), '-', format-number(index-of($months, regex-group(3)), '01'), '-', format-number(xs:integer(regex-group(2)), '01'), 'T', format-number(xs:integer(regex-group(5)), '01'), ':', format-number(xs:integer(regex-group(6)), '01'), ':', format-number(xs:integer(regex-group(7)), '01'), substring(regex-group(8), 1, 3), ':', substring(regex-group(8), 4, 2)))"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <xsl:message>Invalid RFC 2822 datetime: <xsl:value-of select="$date-time"/></xsl:message>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:function>
+
         <xsl:variable name="post-list">
             <xsl:perform-sort select="/posts/*">
-                <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/>
+                <!-- <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/> FIXME: this function isn't avaliable -->
+                <xsl:sort select="convertRFC(./date-posted)" order="descending"/>  
             </xsl:perform-sort>
         </xsl:variable>
 
