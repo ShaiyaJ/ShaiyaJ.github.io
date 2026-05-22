@@ -54,7 +54,8 @@
 
             <xsl:with-param name="content">
                 <h1>Blog</h1>
-                <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
+                <p>If you like my blog you can <a href="/blog/feed.rss">subscribe via RSS</a>!</p>
+                <p>If you like reading the full post in your reader you can <a href="/blog/fullfeed.rss">subscribe to the "full feed"</a>!</p>
 
                 <table>
                     <tr>
@@ -87,10 +88,10 @@
 
                 <xsl:with-param name="content">
                     <h1><xsl:value-of select="./title" /></h1>
+                    <p><xsl:value-of select="./description" /</p>
                     <p>Posted: <xsl:value-of select="./date-posted" /> | Edited: <xsl:value-of select="./date-edited" /></p>
                     <p>in <xsl:value-of select="./category" /></p>
                     <!-- TODO: description? -->
-                    <p><a href="/blog/feed.rss">Subscribe via RSS</a>!</p>
 
                     <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->
                         <xsl:for-each select="/posts/*">
@@ -101,6 +102,8 @@
                     <article>
                         <xsl:copy-of select="./content/node()" />
                     </article>
+
+                    <p>Liked the post? <a href="/blog/feed.rss">Subscribe via RSS</a> or (if you like reading the posts inside your reader) <a href="/blog/fullfeed.rss">subscribe to the full feed</a>!</p>
                 </xsl:with-param>
             </xsl:call-template>
         </xsl:for-each>
@@ -127,6 +130,30 @@
                             </item>
 
                         </xsl:if>
+                    </xsl:for-each>
+                </channel>
+
+            </rss> 
+        </xsl:result-document>
+
+        <xsl:result-document method="xml" omit-xml-declaration="no" href="docs/blog/fullfeed.rss">
+            <rss version="2.0">
+
+                <channel>
+                    <title>ShaiyaJ's Blog</title>
+                    <link>https://ShaiyaJ.github.io/</link>
+                    <description>A blog for a small hobbyist developer.</description>
+
+                    <xsl:for-each select="$post-list/post">
+                        <item>
+                            <title><xsl:value-of select="./title" /></title>
+                            <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./small-title" /></link>
+                            <description><xsl:value-of select="./description" /></description>
+                            <pubdate><xsl:value-of select="./date-posted" /></pubdate>
+                            <content type="html">
+                                <xsl:value-of select="./content" />
+                            </content>
+                        </item>
                     </xsl:for-each>
                 </channel>
 
