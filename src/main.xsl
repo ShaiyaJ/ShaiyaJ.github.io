@@ -124,7 +124,7 @@
 
                             <item>
                                 <title><xsl:value-of select="$currentPost/title" /></title>
-                                <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="$currentPost/small-title" /></link>
+                                <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="$currentPost/short-title" /></link>
                                 <description><xsl:value-of select="$currentPost/description" /></description>
                                 <pubdate><xsl:value-of select="$currentPost/date-posted" /></pubdate>
                             </item>
@@ -147,11 +147,11 @@
                     <xsl:for-each select="$post-list/post">
                         <item>
                             <title><xsl:value-of select="./title" /></title>
-                            <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./small-title" /></link>
+                            <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./short-title" /></link>
                             <description><xsl:value-of select="./description" /></description>
                             <pubdate><xsl:value-of select="./date-posted" /></pubdate>
                             <content type="html">
-                                <xsl:value-of select="./content" />
+                                <xsl:copy-of select="./content/node()" />
                             </content>
                         </item>
                     </xsl:for-each>
