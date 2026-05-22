@@ -44,7 +44,7 @@
         <!-- Generate blog pages -->
         <xsl:variable name="post-list">
             <xsl:perform-sort select="/posts/*">
-                <xsl:sort select="date-posted" order="descending" />
+                <xsl:sort select="fn:parse-ietf-date(normalize-space(date-posted))" order="descending"/>
             </xsl:perform-sort>
         </xsl:variable>
 
@@ -118,15 +118,16 @@
                     <description>A blog for a small hobbyist developer.</description>
 
                     <xsl:for-each select="0 to 5">
-                        <xsl:variable name="currentPost" select="$post-list/post[.]"></xsl:variable>
+                        <xsl:variable name="currentPost" select="$post-list/post[position() = current()]"></xsl:variable>
 
                         <xsl:if test="$currentPost != ''">
 
                             <item>
                                 <title><xsl:value-of select="$currentPost/title" /></title>
                                 <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="$currentPost/short-title" /></link>
+                                <guid>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="$currentPost/short-title" /></guid>
                                 <description><xsl:value-of select="$currentPost/description" /></description>
-                                <pubdate><xsl:value-of select="$currentPost/date-posted" /></pubdate>
+                                <pubDate><xsl:value-of select="$currentPost/date-posted" /></pubDate>
                             </item>
 
                         </xsl:if>
@@ -148,8 +149,9 @@
                         <item>
                             <title><xsl:value-of select="./title" /></title>
                             <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./short-title" /></link>
+                            <guid>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./short-title" /></guid>
                             <description><xsl:value-of select="./description" /></description>
-                            <pubdate><xsl:value-of select="./date-posted" /></pubdate>
+                            <pubDate><xsl:value-of select="./date-posted" /></pubDate>
                             <content type="html">
                                 <xsl:copy-of select="./content/node()" />
                             </content>
