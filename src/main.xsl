@@ -44,7 +44,7 @@
         <!-- Generate blog pages -->
         <xsl:variable name="post-list">
             <xsl:perform-sort select="/posts/*">
-                <xsl:sort select="fn:parse-ietf-date(normalize-space(date-posted))" order="descending"/>
+                <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/>
             </xsl:perform-sort>
         </xsl:variable>
 
