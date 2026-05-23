@@ -166,7 +166,7 @@
 
         <!-- Generate recommended reading page -->
         <xsl:call-template name="page">
-            <xsl:with-param name="filename">blog/index</xsl:with-param>
+            <xsl:with-param name="filename">recommended/index</xsl:with-param>
             <xsl:with-param name="title">ShaiyaJ::Recommendations</xsl:with-param>
 
             <xsl:with-param name="content">
