@@ -78,7 +78,7 @@
                     </xsl:for-each>
                 </table>
 
-
+                <p>If you want more blogs, here are my <a href="/recommended">recommendations</a>.</p>
             </xsl:with-param>
         </xsl:call-template>
 
@@ -163,6 +163,27 @@
 
             </rss> 
         </xsl:result-document>
+
+        <!-- Generate recommended reading page -->
+        <xsl:call-template name="page">
+            <xsl:with-param name="filename">blog/index</xsl:with-param>
+            <xsl:with-param name="title">ShaiyaJ::Recommendations</xsl:with-param>
+
+            <xsl:with-param name="content">
+                <h1>Blog recommendations</h1>
+                <p>A lot of the blogs that I read have a post/page dedicated to linking to other blogs. These are usually their friends or just blogs that they themselves read.</p>
+                <p>I've always approved of this sort of thing, I've managed to find some great blogs because other blogs recommend them. It's a product of a bygone era of the internet.</p>
+                <p>Here are the blogs that I read:</p>
+
+                <ul>
+                    <li><a href="https://mcyoung.xyz/">Sunny</a> - Great posts that go in-depth on compiler development and low level programming</li>
+                    <li><a href="https://wolfgirl.dev/">PolyWolf</a> - Nice collection of cybersecurity reads and range of programming posts (high and low level)</li>
+                </ul>
+
+                <p>I don't know any of these people personally, these are just the good reads that I've come across.</p>
+                <p>I also don't guarantee that these links are necessarily safe. I read a lot of these posts through a feed reader so if the sites have been compromised then I probably wouldn't realise. Browse safely!</p>
+            </xsl:with-param>
+        </xsl:call-template>
 
         <!-- Generate contact page -->
         <xsl:call-template name="page">
