@@ -42,11 +42,16 @@
         </xsl:call-template>
 
         <!-- Generate blog pages -->
-        <xsl:variable name="post-list">
+        <xsl:variable name="post-list-by-date">
             <xsl:perform-sort select="/posts/*">
-                <!-- <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/> FIXME: this function isn't avaliable -->
-                <!-- <xsl:sort select="conv:convertRFC(./date-posted)" order="descending"/> --> <!-- https://gist.github.com/bzerangue/862469 --> 
-                <xsl:sort select="./date-posted" /> <!-- FIXME: this is flawed -->
+                <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/>
+            </xsl:perform-sort>
+        </xsl:variable>
+
+        <xsl:variable name="post-list-by-category">
+            <xsl:perform-sort select="/posts/*">
+                <xsl:sort select="./category" order="decending" />
+                <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/>
             </xsl:perform-sort>
         </xsl:variable>
 
@@ -67,7 +72,7 @@
                         <th>Last Edited</th>
                     </tr>
 
-                    <xsl:for-each select="$post-list/post">
+                    <xsl:for-each select="$post-list-by-date/post">
                         <tr>
                             <td><a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a></td>
                             <td><xsl:value-of select="./category" /></td>
@@ -96,7 +101,7 @@
                     <!-- TODO: description? -->
 
                     <aside id="blog-search"> <!-- TODO: Could use CSS to hide information based on dropdown? Offering by-category by-post-date and by-last-edit date? -->
-                        <xsl:for-each select="/posts/*">
+                        <xsl:for-each select="$post-list-by-category">
                             <p>(<xsl:value-of select="./category" />) <a href="/blog/posts/{./short-title}"><xsl:value-of select="./title" /></a></p>
                         </xsl:for-each>
                     </aside>
@@ -120,7 +125,7 @@
                     <description>A blog for a small hobbyist developer.</description>
 
                     <xsl:for-each select="0 to 5">
-                        <xsl:variable name="currentPost" select="$post-list/post[position() = current()]"></xsl:variable>
+                        <xsl:variable name="currentPost" select="$post-list-by-date/post[position() = current()]"></xsl:variable>
 
                         <xsl:if test="$currentPost != ''">
 
@@ -147,7 +152,7 @@
                     <link>https://ShaiyaJ.github.io/</link>
                     <description>A blog for a small hobbyist developer.</description>
 
-                    <xsl:for-each select="$post-list/post">
+                    <xsl:for-each select="$post-list-by-date/post">
                         <item>
                             <title><xsl:value-of select="./title" /></title>
                             <link>https://ShaiyaJ.github.io/blog/posts/<xsl:value-of select="./short-title" /></link>
