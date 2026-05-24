@@ -13,15 +13,19 @@ jobs:
           fetch-depth: 0
 
       - name: Set up saxon
-        run: sudo apt install libsaxonb-java
+        run: |
+          wget -P /tmp/saxon https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-9/SaxonHE12-9J.zip
+          unzip -o /tmp/saxon /tmp/saxon/SaxonHE12-9J.zip
 
       - name: Update contents
         run: | 
           git pull origin master
           rm -rf ./docs/*
       
-      - name: Build XSLT to HTML
-        run: bash ./build.sh
+      - name: Build XSLT to HTML and copy static resources
+        run: | bash ./build.sh
+          java -jar /tmp/saxon/saxon-he-12.9.jar -xsl:src/main.xsl -s:src/data/posts.xml -ext:on
+          cp src/global.css docs/global.css
 
       - name: Commit and push changes
         run: |
