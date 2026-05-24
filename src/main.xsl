@@ -50,7 +50,7 @@
 
         <xsl:variable name="post-list-by-category">
             <xsl:perform-sort select="/posts/*">
-                <xsl:sort select="./category" order="decending" />
+                <xsl:sort select="./category" order="descending" />
                 <xsl:sort select="parse-ietf-date(normalize-space(date-posted))" order="descending"/>
             </xsl:perform-sort>
         </xsl:variable>
