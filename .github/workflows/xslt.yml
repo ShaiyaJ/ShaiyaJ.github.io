@@ -15,7 +15,7 @@ jobs:
       - name: Set up saxon
         run: |
           wget -P /tmp/saxon https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-9/SaxonHE12-9J.zip
-          unzip -o /tmp/saxon /tmp/saxon/SaxonHE12-9J.zip
+          unzip -d /tmp/saxon /tmp/saxon/SaxonHE12-9J.zip
 
       - name: Update contents
         run: | 
