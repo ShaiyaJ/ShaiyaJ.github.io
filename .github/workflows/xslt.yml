@@ -23,7 +23,7 @@ jobs:
           rm -rf ./docs/*
       
       - name: Build XSLT to HTML and copy static resources
-        run: | bash ./build.sh
+        run: | 
           java -jar /tmp/saxon/saxon-he-12.9.jar -xsl:src/main.xsl -s:src/data/posts.xml -ext:on
           cp src/global.css docs/global.css
 
