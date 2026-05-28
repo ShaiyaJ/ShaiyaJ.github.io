@@ -52,6 +52,10 @@ main {
     */
 }
 
+main h1:first-child {
+    margin-top: 0;
+}
+
 a {
     color: var(--link);
     text-decoration: none;
@@ -68,6 +72,29 @@ a {
 
 h1, h2, h3 {
     color: var(--title);
+}
+
+table {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0.25em;
+    width: 100%;
+}
+
+th {
+    border-bottom: 1px solid var(--text);
+    padding: 0 2em;
+}
+
+aside {
+    border-radius: 10px;
+    width: max-content;
+    padding: 0.5em;
+
+    background-color: var(--background);
+
+    box-shadow: -10px 10px 30px #BBB;
+    transform: translate(-3em, 0px);
 }
 
 

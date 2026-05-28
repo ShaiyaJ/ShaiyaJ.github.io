@@ -1,0 +1,191 @@
+<!DOCTYPE html><!DOCTYPE HTML>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>ShaiyaJ::Blog::The web is a tsunami</title>
+      <link rel="icon" href="https://avatars.githubusercontent.com/u/93013772" type="image/png">
+      <link rel="stylesheet" href="/global.css">
+      <link rel="alternate" type="application/rss" href="/blog/feed.rss">
+   </head>
+   <body>
+      <nav>
+         <a href="/">Home</a>
+         <a href="/blog">Blog</a>
+         <a href="/contact">Contact</a>
+         <a href="https://github.com/ShaiyaJ">Github</a>
+         </nav>
+      <main>
+         <h1>The web is a tsunami</h1>
+         <p>A look into the state of web development and web developers.</p>
+         <p>Posted: Wed, 20 May 2026 12:50:10 +0100 | Edited: Wed, 20 May 2026 13:28:13 +0100</p>
+         <p>in Software</p>
+         <aside id="blog-search">
+            <details>
+               <summary>Post list</summary>
+               <p>() <a href="/blog/posts/"></a></p>
+            </details>
+         </aside>
+         <article>
+            
+            <p>The history of this website has made me reflect on <em>how</em> websites are developed.</p>
+            
+            
+            <h3>The DRY principle</h3>
+            
+            <p><a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> as a principle is really well known principle in software development. Most people
+               understand this principle to mean something along the lines of not repeating code,
+               factoring out repetition into separate functions that can be reused.</p>
+            
+            <p>But, at a more fundamental level it is about not repeating information/knowledge/intent.
+               There's a lot of room to argue about what is and isn't DRY.</p>
+            
+            <p>For the purposes of this post, I'm only really considering the high level definition
+               because it's sufficient to get my point across. But if you would like to consider
+               the DRY principle deeper, I'd recommend <a href="https://media.pragprog.com/titles/tpp20/dry.pdf">this</a> extract from "The Pragmatic Programmer" by David Thomas and Andrew Hunt. Luckily,
+               they provide this very section as a free sample on the book's website.</p>
+            
+            
+            <h3>The state of DRY in modern web development</h3>
+            
+            <p>Web developers have worked hard to make a relatively DRY ecosystem. If I want to make
+               a website, I can go and download node, npm and use React, Svelte or Vue for a DRY
+               experience. One of the main selling points of these frameworks is that they allow
+               you to turn repeating sections of your website into "components", which can be reused.
+               They allow you to programmatically build websites. They allow you to use all the techniques
+               in software development to make your website as DRY as possible.</p>
+            
+            <p>However, this comes at a big cost to the developer. Bloat. Massive amounts of bloat.</p>
+            
+            <p>A very common critique of these web development frameworks, and the npm ecosystem
+               in general, is that they involve pulling in thousands of dependencies for the frameworks
+               alone. That doesn't even include the other dependencies that you might pull in alongside
+               your app, which you're often recommended to use by the community, tutorials or AI
+               tooling.</p>
+            
+            <p>Sometimes these packages have dependencies for <a href="https://en.wikipedia.org/wiki/Npm_left-pad_incident">very simple use cases</a>. This is code that isn't maintained by you or your team. At best, this creates the
+               potential for a future complication failure. At worst, this creates a potential future
+               <a href="https://en.wikipedia.org/wiki/Supply_chain_attack">attack vector</a>. These sorts of attacks have become quite common and are <a href="https://www.microsoft.com/en-us/security/blog/2026/04/01/mitigating-the-axios-npm-supply-chain-compromise/">rather high profile</a> in recent times.</p>
+            
+            <p>Large and complicated web apps may sometimes require this complexity, and will have
+               to wrestle with the security issues it brings. However, I often see some developers
+               using React for their personal websites or blogs. Both of these use cases aren't <em>quite</em> as complicated and may not warrant the use of such a heavy library. (This isn't a
+               jab at those developers! A lot of people do this to have a React project in their
+               portfolio, or to learn the technology. But the consequences of using heavy frameworks
+               is impossible to avoid either way).</p>
+            
+            <p>The issues don't just stop at security, it also changes your development workflow.
+               It pulls in JavaScript both as a dependency to build your website and as a knowledge
+               prerequisite in order to contribute to your website. For a lot of web developers this
+               isn't an issue, but it's something to consider before you do it.</p>
+            
+            <p>Finally, and perhaps the worst of all, is that it effects your end user. It forces
+               them to either run a complicated JavaScript framework's runtime in order to view your
+               website or wait for your server to serve up the dynamically rendered content. If it's
+               the former, then that also means the user must use JavaScript to even view the website
+               (that may only lock out <a href="https://web.archive.org/web/20101016010319/https://developer.yahoo.com/blogs/ydn/posts/2010/10/how-many-users-have-javascript-disabled/">1.3%</a> of users, but I'm sure those people would appreciate being able to view your site).</p>
+            
+            <p>It may seem like I'm bashing JavaScript and JavaScript frameworks a lot. I actually
+               admire a lot of these frameworks for their ideas in language design and the sheer
+               scope of web apps that they can support. However, I feel like your average developer
+               doesn't consider the downsides enough. It's not the framework's fault, and I don't
+               have the relevant experience to really criticise the frameworks themselves. I simply
+               think the developers using these tools should be aware of the impact that such a dependency
+               will bring on their security, development experience and end user experience. You
+               shouldn't power a light bulb with a nuclear reactor (but if you're managing a city,
+               maybe a nuclear reactor is okay).</p>
+            
+            
+            <h3>The state of DRY in static websites</h3>
+            
+            <p>A common use case I see for these frameworks is personal websites. A lot of my friends
+               have React/NextJS powered websites that look amazing (much, much better than mine).
+               But they don't really use the full power of the framework in their websites. A simple
+               static webpage with a blog doesn't really end up using a lot of the features that
+               these frameworks provide.</p>
+            
+            <p>So let's do a hypothetical: you're a developer wanting to simplify your personal website.</p>
+            
+            <p>Luckily for you, Static webpages benefit from being able to use more tools. If you're
+               only using components to avoid repeating markup (e.g. a navigation bar at the top
+               of the page) you might consider a templating engine instead such as <a href="https://ejs.co/">ejs</a>. Or you might want to move away from JavaScript entirely and generate your site using
+               your own scripts or libraries written in your preferred language. Or maybe you'd like
+               a specialised tool such as <a href="https://en.wikipedia.org/wiki/XSLT">xslt</a> to generate your site.</p>
+            
+            <p>A lot of these tools still require a build step, and still require contributors to
+               know a specific tool or language beforehand. But the barrier to entry can be much
+               lower, as the tools are much simpler and more focused.</p>
+            
+            <p>Your end user experience is also much better - as you're only serving static html
+               files that a server doesn't have to pre-process, and a client doesn't have to spend
+               extensive time loading and running excessive scripts.</p>
+            
+            <p>That is about all the power you as a developer have for developing your personal websites.
+               But something doesn't feel quite right.</p>
+            
+            
+            <h3>An ideal future</h3>
+            
+            <p>All of the developer solutions require some level of sacrifice. Some dependency on
+               an external tool. Why can't standard HTML do all of these things?</p>
+            
+            <p>An ideal future is one where we can have reusable snippets of HTML directly in our
+               markup. We don't need to build the website or host a http server on localhost to see
+               changes. We just open the file. No build step, no external dependencies and it's DRY.</p>
+            
+            <p>A while ago a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">native web API for components</a> was introduced. This allowed people to create web components using JavaScript. This
+               allows browsers to make rendering components much more performant and I've seen adoption
+               of this API being used by big names such as YouTube and Reddit.</p>
+            
+            <p>It allowed developers to remove the build step of their workflow. Great! But it pulled
+               in a requirement for JavaScript in order for developers to register components and
+               for users to see those components in their browser. Not so great.</p>
+            
+            <p>This drove a hope that HTML would get some way to have reusable components. This would
+               allow developers and users to have truly native components, without the need for JavaScript.
+               There was progress with the introduction of the template tag in <a href="https://www.w3.org/TR/2021/SPSD-html52-20210128/">HTML 5.2</a> which allowed you to define markup that wouldn't be rendered (instead, you could
+               reference these templates when creating custom elements). But this only made using
+               the JavaScript API easier.</p>
+            
+            <p>The last known push for HTML-only components was the <a href="https://web.dev/articles/declarative-shadow-dom">Declarative Shadow DOM</a>. This is a step in the right direction but not really convenient.</p>
+            
+            <p>Personally I think this issue could be solved simply by making all template tags with
+               a valid custom name as their ID into custom elements automatically. JavaScript does
+               something similar where it creates variables for all IDs that have valid JavaScript
+               variable names.</p>
+            
+            <p>To expand on this idea, the link tag could "include" templates from external sources
+               (ideally not from other websites).</p> 
+            
+            <p>I wrote a <a href="https://gist.github.com/ShaiyaJ/966731969d3ad36b02fd68260dd99b2f">joke gist</a> implementing something like this. The core idea is around 15 lines long, with the
+               link tag idea being 27. It's that simple.</p>
+            
+            <p>But I'm not a web developer. And part of the reason why features like this take so
+               long to come out is because they must be carefully considered for a lot more use cases
+               and security. My solution holds up for my use cases, but doesn't in the wider context
+               of the web as a whole.</p>
+            
+            <p>I primarily wrote this post to bring to light frustrations I had when developing this
+               website. I'm used to a world where you are encouraged to write your own libraries,
+               and only pull in dependencies when you absolutely must. A world where you can confidently
+               understand <em>what</em> your app is doing. To me, that is a much simpler world - web development is a completely
+               different culture to me.</p>
+            
+            
+            <h3>Conclusion</h3>
+            
+            <p>Keep the tools you use as simple as possible. Only use tools with just enough power
+               to achieve your use case - you can always rewrite using a different tool later. And,
+               when in doubt, write your own tooling.</p>
+            
+            <p>Oh and don't listen to random developers who don't specialise in web development talk
+               about web development-</p>
+            </article>
+         <p>Liked the post? <a href="/blog/feed.rss">Subscribe via RSS</a> or (if you like reading the posts inside your reader) <a href="/blog/fullfeed.rss">subscribe to the full feed</a>!</p>
+      </main>
+      <footer>
+         <br>
+         
+         <p>ShaiyaJ - Copyright 2026</p>
+         </footer>
+   </body>
+</html>
