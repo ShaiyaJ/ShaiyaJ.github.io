@@ -130,4 +130,25 @@
             <p>If you've read this far into this rambly post then... wow, thank you! I hope you enjoyed reading up on the history of this little place.</p>
         </content>
     </post>
+
+    <post>
+        <title>RSS: a positive tool for screen time</title>
+        <short-title>rss-screentime</short-title>
+        <description>Changes I've made to my browsing habits.</description>
+        <category>Misc</category>
+
+        <date-posted>Thu, 28 May 2026 12:43:50 +0100</date-posted>
+        <date-edited>Thu, 28 May 2026 12:43:50 +0100</date-edited>
+
+        <content>
+            <p>RSS harkens back to a time in the internet where you had to go out and "subscribe" to individual websites.</p>
+            <p>You didn't have monolith websites with their algorithmic feeds and internal mechanisms for following/notifications. RSS is literally a chronological feed of every individual website you've subscribed to.</p>
+            <p>And the good thing is that YouTube has RSS feeds. You have to go and view the actual source of the channel page - but if you Ctrl+f for "rss" it is there and does work. So I moved a lot of the channels I actually like to RSS, and left the algorithm completely.</p>
+            <p>You can turn most of anything into an RSS feed, there are tools that even turn websites that don't have RSS into RSS feeds. But a lot of indie sites have RSS feeds because it's a very cheap way to allow people to "subscribe" without needing to implement that as an actual feature. It's great because <em>you</em> control what you get notified about and see. <em>You</em> have to go away and add the link to your feed manually so it gives you time to consider if this is someone that you <em>actually</em> want to follow.</p>
+            <p>It has also just been a great experience looking up indie blogs and adding them to my feed. A lot of them have a "friends"/"recommended" page - but unlike algorithmically-generated ones these ones are hand made by the site creator. It allows you to spring right into another person's blog and consider adding them to your feed too.</p>
+            <p>I think RSS could curb a lot of the negativity that algorithms can push you into if they're geared exclusively for views. Negativity sells! Baa!</p>
+            <p>In my case, I tend to avoid a lot of negativity anyway - I watch long talks about programming and cybersecurity, and analysis videos on programming languages. I don't really have a reason to view negative videos (yet I still get recommended them, strange). RSS for me has been less about avoiding clickbait-y negativity and more about filtering low-quality off-topic posts/videos from the feed. It's a slower experience - the individuals who I've subscribed to are busy people and don't post super often, but it means when they do post <em>I know I'm going to want to see it</em>. For this reason I think that RSS is a great tool for screen time.</p>
+            <p>If you run a smaller blog website, add RSS. You'll get a handful of people who really appreciate it.</p>
+        </content>
+    </post>
 </posts>
