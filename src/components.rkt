@@ -3,7 +3,11 @@
 
 (require xml)
 
-(define (component-navbar) '(nav (a) (a)))
+(define (component-navbar) '(nav (a ((href "/")) "Home") 
+                                 (a ((href "/blog")) "Blog")
+                                 (a ((href "/contact")) "Contact")
+                                 (a ((href "https://github.com/ShaiyaJ")) "Github")))
+
 (define (component-footer) '(footer (p "The footer is work in progress...")
                              (p "Copyright 2026")))
 
