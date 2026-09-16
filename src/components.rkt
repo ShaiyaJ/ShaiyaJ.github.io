@@ -8,8 +8,7 @@
                                  (a ((href "/contact")) "Contact")
                                  (a ((href "https://github.com/ShaiyaJ")) "Github")))
 
-(define (component-footer) '(footer (p "The footer is work in progress...")
-                             (p "Copyright 2026")))
+(define (component-footer) '(footer (p "ShaiyaJ - Copyright 2026")))
 
 (define (page-template page-title page-content) (xexpr->string
     `(html
