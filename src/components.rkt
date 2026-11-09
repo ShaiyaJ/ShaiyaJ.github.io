@@ -22,3 +22,6 @@
             ,(component-navbar)
             (main ,@page-content)
             ,(component-footer)))))
+
+(define (write-page page-path page-title page-content) 
+    (write-to-file page-path (page-template page-title page-content)))
