@@ -1,18 +1,5 @@
 #lang racket
 
-(define (process-command cmd args) 
-    (define-values (sp out in err) 
-        (subprocess #f #f #f cmd args))
-    (subprocess-wait sp)
-
-    (close-output-port in)
-    (close-input-port err)
-    (port->string out #:close? #t))
-
-(define (display-to-string str)
-    (with-output-to-string
-        (thunk (display str))))
-
 (define (process-rkt-file path) 
     (read (open-input-string (with-output-to-string
         (thunk (dynamic-require path #f))))))
